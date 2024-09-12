@@ -1,0 +1,6 @@
+project:
+  name: dbt-dag
+webserver:
+  port: 8089
+postgres:
+  port: 5435

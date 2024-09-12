@@ -1,0 +1,14 @@
+data_pipeline:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: aw18386.us-central1.gcp
+      user: MYNAMEISRIYANDI
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: dbt_role
+      database: dbt_db
+      warehouse: dbt_wh
+      schema: dbt_schema
+      threads: 1
+      client_session_keep_alive: False
