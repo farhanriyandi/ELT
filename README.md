@@ -4,7 +4,7 @@
 * Airflow (Orchestration)
 * DBT (Transformation)
 
-## Step 1 set up environment in snowflake
+## Step 1: Set up environment in snowflake
 
 
 ## Step 2: Configure dbt_project.yml and packages
