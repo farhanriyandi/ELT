@@ -1,5 +1,5 @@
 ## Tools
-* Snowflake (Data Source 1)
+* Snowflake (Data Source)
 * Snowflake (Data Warehouse)
 * Airflow (Orchestration)
 * DBT (Transformation)
