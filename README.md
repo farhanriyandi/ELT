@@ -117,14 +117,15 @@ models:
 ```
 
 Next, install dbt-utils, which will be useful for performing generic tests. 
-**1. Add a packages.yml file to your project.**
-**2. In the `packages.yml`, add the following code:** 
+1. Add a packages.yml file to your project.
+
+2. In the `packages.yml`, add the following code: 
 ```
 packages:
   - package: dbt-labs/dbt_utils
     version: 1.3.0
 ```
-**3. Run dbt deps in your terminal to download and install the dependencies defined in the packages.yml file for your dbt project.**  
+3. Run dbt deps in your terminal to download and install the dependencies defined in the packages.yml file for your dbt project.
 
 
 
