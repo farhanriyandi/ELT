@@ -252,7 +252,7 @@ In the `macros` folder, add a file named `pricing.sql`.
 ## Step 8: Generic and singular tests+
 
 ### For Generic Tests
-Create models/marts/generic_tests.yml
+In the models/marts folder, add a file named `generic_tests.yml`.
 ```
 models:
   - name: fct_orders
