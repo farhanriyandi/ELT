@@ -58,8 +58,18 @@ dbt init data_pipeline
 cd data_pipeline
 ```
 
-
-
+### Setup DBT Project configuration in dbt_project.yml
+```
+models:
+  data_pipeline:
+    # Config indicated by + and applies to all files under models/example/
+    staging:
+      +materialized: view
+      snowflake_warehouse: dbt_wh
+    marts:
+      +materialized: table
+      snowflake_warehouse: dbt_wh
+```
 
 ## Step 3: Create source and staging tables
 
