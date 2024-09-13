@@ -61,6 +61,9 @@ cd data_pipeline
 ```
 
 ## Step 3: Setup DBT Profile
+By default, DBT will create a dbt profile at your home directory `~/.dbt/profiles.yml`
+You can update the profiles, or you can make a new dbt-profile directory.
+To make a new dbt-profie directory, you can invoke the following:
 ```
 mkdir dbt-profiles
 touch dbt-profiles/profiles.yml
@@ -97,6 +100,8 @@ export SNOWFLAKE_PASSWORD=your_actual_password
 Then, in the `profiles.yml`, you can enter your password as shown in the profiles.yml above like this one `password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"`
 
 
+
+
 ## Step 4: Configure dbt_project.yml and packages
 ### Setup DBT Project configuration in dbt_project.yml
 ```
@@ -111,18 +116,18 @@ models:
       snowflake_warehouse: dbt_wh
 ```
 
-## Step 3: Create source and staging tables
+## Step 5: Create source and staging tables
 
 
-## Step 4: Transformed models (fact tables, data marts)
+## Step 6: Transformed models (fact tables, data marts)
 
 
-## Step 5: Create marcos Keep things D.R.Y (Don’t Repeat Yourself)
+## Step 7: Create marcos Keep things D.R.Y (Don’t Repeat Yourself)
 
 
-## Step 6: Generic and singular tests
+## Step 8: Generic and singular tests
 
 
-## Step 7: Deploy models using Airflow
+## Step 9: Deploy models using Airflow
 
 
