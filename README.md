@@ -293,6 +293,84 @@ where
     or date(order_date) < date('1990-01-01')
 ```
 
+### Run and test the models
+```
+dbt run && dbt test
+```
+
 ## Step 9: Deploy models using Airflow
+The next step is to move back one directory from the `data_pipeline directory`, then create a new folder which we will name `dbt_dag`
+
+```
+cd ..
+mkdir dbt-dag
+cd dbt-dag
+```
+
+And then run
+```
+astro dev init
+```
+
+Before running Airflow, by default airflow will run on `localhost:8080`, but we can set the port as desired. In the `.astro` folder, there is a file called `config.yml`. Here, I set the PostgreSQL port to `5435` and the Airflow port to `8089`. So i have to use `localhost:8089` to open airflow
+
+```
+project:
+  name: dbt-dag
+webserver:
+  port: 8089
+postgres:
+  port: 5435
+```
+
+
+After that run
+```
+astro dev start
+```
+
+In dbg `dags` folder there is `dbt_dag.py` add this code
+```
+import os
+from datetime import datetime
+
+from cosmos import DbtDag, ProjectConfig, ProfileConfig, ExecutionConfig
+from cosmos.profiles import SnowflakeUserPasswordProfileMapping
+
+
+profile_config = ProfileConfig(
+    profile_name="default",
+    target_name="dev",
+    profile_mapping=SnowflakeUserPasswordProfileMapping(
+        conn_id="snowflake_conn", 
+        profile_args={"database": "dbt_db", "schema": "dbt_schema"},
+    )
+)
+
+dbt_snowflake_dag = DbtDag(
+    project_config=ProjectConfig("/usr/local/airflow/dags/dbt/data_pipeline",),
+    operator_args={"install_deps": True},
+    profile_config=profile_config,
+    execution_config=ExecutionConfig(dbt_executable_path=f"{os.environ['AIRFLOW_HOME']}/dbt_venv/bin/dbt",),
+    schedule_interval="@daily",
+    start_date=datetime(2024, 9, 9),
+    catchup=False,
+    dag_id="dbt_dag",
+)
+```
+
+The data_pipeline folder is then copied and pasted into the dags/dbt folder as follows:
+![image](https://github.com/user-attachments/assets/bc7582f8-4b1b-4688-9757-46c9bdfacf42)
+
+
+And then open `localhost:8089` to access airflow. The username is `admin` and the password is `admin`. After that, click on Admin and then click on Connections to create a connection between Airflow and Snowflake.
+
+![image](https://github.com/user-attachments/assets/a5787e19-0cb8-49ff-8b0a-e6e28f88d2c0)
+
+![image](https://github.com/user-attachments/assets/b4f18c20-b3d0-4318-91aa-4e86a94fb058)
+
+
+
+
 
 
