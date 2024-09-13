@@ -363,11 +363,15 @@ The data_pipeline folder is then copied and pasted into the dags/dbt folder as f
 ![image](https://github.com/user-attachments/assets/bc7582f8-4b1b-4688-9757-46c9bdfacf42)
 
 
-And then open `localhost:8089` to access airflow. The username is `admin` and the password is `admin`. After that, click on Admin and then click on Connections to create a connection between Airflow and Snowflake.
+And then open `localhost:8089` to access airflow. The username is `admin` and the password is `admin`. After that, click on Admin and then click on connections to create a connection between Airflow and Snowflake.
 
 ![image](https://github.com/user-attachments/assets/a5787e19-0cb8-49ff-8b0a-e6e28f88d2c0)
 
 ![image](https://github.com/user-attachments/assets/b4f18c20-b3d0-4318-91aa-4e86a94fb058)
+
+### Trigger DAG
+![image](https://github.com/user-attachments/assets/479344fb-cca4-49cf-9ff1-366b438d38d0)
+
 
 
 
