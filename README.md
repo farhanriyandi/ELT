@@ -242,16 +242,56 @@ order by order_date
 
 **Macros** are used to create reusable SQL code. By using macros, you can write SQL logic once and then use it in multiple models or other places within your dbt project. This helps reduce code duplication and makes the project more modular and easier to manage.
 
-
-Create `macros/pricing.sql`
+In the `macros` folder, add a file named `pricing.sql`.
 ```
 {% macro discounted_amount(extended_price, discount_percentage, scale=2) %}
     (-1 * {{ extended_price }} * {{discount_percentage}})::decimal(16, {{ scale }})
 {% endmacro %}
 ```
 
-## Step 8: Generic and singular tests
+## Step 8: Generic and singular tests+
 
+### For Generic Tests
+Create models/marts/generic_tests.yml
+```
+models:
+  - name: fct_orders
+    columns:
+      - name: order_key
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('stg_tpch_orders')
+              field: order_key
+              severity: warn
+      - name: status_code
+        tests:
+          - accepted_values:
+              values: ['P', 'O', 'F']
+```
+
+### For singular tests
+In the `tests` folder, add a file named `fct_orders_discount.sql`.
+```
+select
+    *
+from
+    {{ref('fct_orders')}}
+where
+    item_discount_amount > 0
+```
+
+In the `tests` folder, add a file named `fct_orders_date_valid.sql`.
+```
+select 
+    *
+from
+    {{ref('fct_orders')}}
+where
+    date(order_date) > CURRENT_DATE()
+    or date(order_date) < date('1990-01-01')
+```
 
 ## Step 9: Deploy models using Airflow
 
