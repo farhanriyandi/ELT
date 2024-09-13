@@ -87,17 +87,14 @@ data_pipeline:
 
 
 ![image](https://github.com/user-attachments/assets/d7ebffe4-f403-4690-9de7-5b6e20232672)
-For the account locator, you can go to Admin, then Accounts. In the locator section, you can copy it. In my account locator, the result is: https://aw18386.us-central1.gcp.snowflakecomputing.com
-You can place it in the profiles.yml under the locator section like this: aw18386.us-central1.gcp
+For the account locator, you can go to Admin, then Accounts. In the locator section, you can copy it. In my account locator, the result is: `https://aw18386.us-central1.gcp.snowflakecomputing.com`
+You can place it in the `profiles.yml` under the locator section like this: `aw18386.us-central1.gcp`
 
 And in the terminal, you can type the following:
 ```
 export SNOWFLAKE_PASSWORD=your_actual_password
 ```
-Then, in the profiles.yml, you can enter your password as shown in the profiles.yml above
-```
-password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
-```
+Then, in the `profiles.yml`, you can enter your password as shown in the profiles.yml above like this one `password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"`
 
 
 ## Step 4: Configure dbt_project.yml and packages
