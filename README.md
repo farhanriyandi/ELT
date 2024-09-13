@@ -24,6 +24,19 @@ create schema dbt_db.dbt_schema; -- Create a schema named dbt_schema within the 
 ```
 ## Step 2: Configure dbt_project.yml and packages
 
+1. ** Create a folder **
+```
+mkdir data_pipeline
+cd data_pipeline
+```
+
+2. ** Create and activate a virtual environment **
+```
+    python3 -m venv venv
+    source venv/bin/activate
+```
+   
+3. 
 
 ## Step 3: Create source and staging tables
 
