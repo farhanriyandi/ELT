@@ -5,6 +5,7 @@
 * DBT (Transformation)
 
 ## Step 1: Set up environment in snowflake
+
 ```
 use role accountadmin; -- This sets the role used to ACCOUNTADMIN, which is the role with the highest level of access in Snowflake. This role allows the execution of all types of administrative operations
 create warehouse if not exists dbt_wh with warehouse_size='x-small'; -- Create a warehouse named dbt_wh with an x-small size if it does not already exist
@@ -22,7 +23,8 @@ use role dbt_role; -- Change the current role to dbt_role, so that subsequent co
 
 create schema dbt_db.dbt_schema; -- Create a schema named dbt_schema within the dbt_db database. The schema is used to organize tables and other objects within the database.
 ```
-## Step 2: Configure dbt_project.yml and packages
+
+## Step 2: Setup DBT Project
 
 ### Create and activate a virtual environment
 ```
@@ -58,6 +60,47 @@ dbt init data_pipeline
 cd data_pipeline
 ```
 
+## Step 3: Setup DBT Profile
+```
+mkdir dbt-profiles
+touch dbt-profiles/profiles.yml
+export DBT_PROFILES_DIR=$(pwd)/dbt-profiles
+```
+
+Set profiles.yml as follow:
+```
+data_pipeline:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: aw18386.us-central1.gcp # use your account locator
+      user: MYNAMEISRIYANDI # change it to your username
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}" 
+      role: dbt_role
+      database: dbt_db
+      warehouse: dbt_wh
+      schema: dbt_schema
+      threads: 1
+      client_session_keep_alive: False
+```
+
+
+![image](https://github.com/user-attachments/assets/d7ebffe4-f403-4690-9de7-5b6e20232672)
+For the account locator, you can go to Admin, then Accounts. In the locator section, you can copy it. In my account locator, the result is: https://aw18386.us-central1.gcp.snowflakecomputing.com
+You can place it in the profiles.yml under the locator section like this: aw18386.us-central1.gcp
+
+And in the terminal, you can type the following:
+```
+export SNOWFLAKE_PASSWORD=your_actual_password
+```
+Then, in the profiles.yml, you can enter your password as shown in the profiles.yml above
+```
+password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+```
+
+
+## Step 4: Configure dbt_project.yml and packages
 ### Setup DBT Project configuration in dbt_project.yml
 ```
 models:
