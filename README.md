@@ -4,7 +4,7 @@
 * Airflow (Orchestration)
 * DBT (Transformation)
 
-## Step 1: Set up environment in snowflake
+## Step 1 Set up environment in snowflake
 
 ```
 use role accountadmin; -- This sets the role used to ACCOUNTADMIN, which is the role with the highest level of access in Snowflake. This role allows the execution of all types of administrative operations
