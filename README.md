@@ -46,6 +46,18 @@ pip install dbt-core
 dbt init data_pipeline
 ```
 
+### After that you will get some questions like the following picture:
+![image](https://github.com/user-attachments/assets/f9a647ea-9ce7-4972-9b62-89b8213bbdb9)
+
+
+![image](https://github.com/user-attachments/assets/545a92c1-52e4-46ae-94c7-1a9bda997e19)
+
+
+### Change to the data_pipeline directory.
+```
+cd data_pipeline
+```
+
 
 
 
