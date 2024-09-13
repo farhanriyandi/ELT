@@ -116,7 +116,7 @@ models:
       snowflake_warehouse: dbt_wh
 ```
 
-Next, install dbt-utils, which will be useful for performing generic tests. 
+### Next, install dbt-utils, which will be useful for performing generic tests. 
 1. Add a packages.yml file to your project.
 
 2. In the `packages.yml`, add the following code: 
