@@ -259,7 +259,15 @@ order by order_date
 
 ## Step 7: Create marcos Keep things D.R.Y (Don’t Repeat Yourself)
 
+**Macros** are used to create reusable SQL code. By using macros, you can write SQL logic once and then use it in multiple models or other places within your dbt project. This helps reduce code duplication and makes the project more modular and easier to manage.
 
+
+Create `macros/pricing.sql`
+```
+{% macro discounted_amount(extended_price, discount_percentage, scale=2) %}
+    (-1 * {{ extended_price }} * {{discount_percentage}})::decimal(16, {{ scale }})
+{% endmacro %}
+```
 
 ## Step 8: Generic and singular tests
 
