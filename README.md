@@ -125,7 +125,7 @@ packages:
   - package: dbt-labs/dbt_utils
     version: 1.3.0
 ```
-3. Run dbt deps in your terminal to download and install the dependencies defined in the packages.yml file for your dbt project.
+3. Run `dbt deps` in your terminal to download and install the dependencies defined in the packages.yml file for your dbt project.
 
 
 
