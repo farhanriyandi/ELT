@@ -190,26 +190,7 @@ from
 
 ## Step 6: Transformed models (fact tables, data marts)
 
-In the `models` folder, add a folder named `marts`. In the `marts` folder, add files named `generic_tests.yml`, `int_order_items.sql`, `int_order_items_summary.sql`, and 'fct_orders.sql'
-
-Modification your `generic_tests.yml`
-```
-models:
-  - name: fct_orders
-    columns:
-      - name: order_key
-        tests:
-          - unique
-          - not_null
-          - relationships:
-              to: ref('stg_tpch_orders')
-              field: order_key
-              severity: warn
-      - name: status_code
-        tests:
-          - accepted_values:
-              values: ['P', 'O', 'F']
-```
+In the `models` folder, add a folder named `marts`. In the `marts` folder, add files named `int_order_items.sql`, `int_order_items_summary.sql`, and 'fct_orders.sql'
 
 Modification your `int_order_items.sql`
 ```
