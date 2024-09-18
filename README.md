@@ -372,7 +372,6 @@ And then open `localhost:8089` to access airflow. The username is `admin` and th
 ![image](https://github.com/user-attachments/assets/b4f18c20-b3d0-4318-91aa-4e86a94fb058)
 
 ### Trigger DAG
-![image](https://github.com/user-attachments/assets/479344fb-cca4-49cf-9ff1-366b438d38d0)
 
 ![image](https://github.com/user-attachments/assets/2fe0f66a-d93a-4574-98fa-e88c19b5ae26)
 
