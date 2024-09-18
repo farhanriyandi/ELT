@@ -1,3 +1,4 @@
+# ELT Pipeline: Snowflake DBT Airflow
 I learned about ELT on the YouTube channel `jayzern` [Click this link for the YouTube channel that I followed to learn on this course](https://www.youtube.com/watch?v=OLXkGB7krGo)
 
 ## Tools
